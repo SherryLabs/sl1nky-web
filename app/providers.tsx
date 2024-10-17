@@ -6,11 +6,6 @@ import {
 } from '@rainbow-me/rainbowkit';
 import { WagmiProvider } from 'wagmi';
 import {
-    mainnet,
-    polygon,
-    optimism,
-    arbitrum,
-    base,
     avalancheFuji
 } from 'wagmi/chains';
 import {
@@ -22,9 +17,9 @@ import {
 
 export function Providers({ children }: { children: React.ReactNode }) {
     const config = getDefaultConfig({
-        appName: 'Obsevadores!',
+        appName: 'Sherries',
         projectId: 'YOUR_PROJECT_ID',
-        chains: [mainnet, polygon, optimism, arbitrum, base, avalancheFuji],
+        chains: [avalancheFuji],
         ssr: true, // If your dApp uses server side rendering (SSR)
     });
     
