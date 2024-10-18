@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Example
 
-## Getting Started
+## Basic Contract - MiniApp
 
-First, run the development server:
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity 0.8.24;
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+contract MiniApp {
+    string public s_greeting;
+    uint256 public s_counter;
+
+    function setGreeting(string memory _greeting) public {
+        s_greeting = _greeting;
+    }
+
+    function setCounter(uint256 _counter) public {
+        s_counter = _counter;
+    }
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Functions to execute
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+#### Write
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+```typescript
+function setGreeting(string memory _greeting) public {
+    s_greeting = _greeting;
+}
+```
 
-## Learn More
+```typescript
+function setCounter(uint256 _counter) public {
+    s_counter = _counter;
+}
+```
 
-To learn more about Next.js, take a look at the following resources:
+#### Read
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```solidity
+s_greeting
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```solidity
+s_counter
+```
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Contract Address
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Basic contract aready deployed Avalanche Fuji
+
+```typescript
+0x2e3b71cf183657582f03c44f35fecf235677c1ed;
+```
