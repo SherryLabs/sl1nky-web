@@ -5,6 +5,7 @@
 import { type Metadata } from '@/sherries/metadata'
 
 // Components
+import Image from 'next/image'
 import {
   Card,
   CardContent,
@@ -14,7 +15,6 @@ import {
   CardTitle
 } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import Image from 'next/image'
 import { ActionButton } from '@/components/ActionButton'
 
 // #region COMPONENT
@@ -23,7 +23,7 @@ export function MetadataCard ({
   title,
   description,
   label,
-  links
+  actions
 }: Metadata): JSX.Element {
   return (
     <Card className='w-full max-w-[350px] min-h-full rounded-2xl shadow-lg hover:shadow-2xl'>
@@ -43,7 +43,7 @@ export function MetadataCard ({
         <CardDescription>{description}</CardDescription>
       </CardContent>
       <CardFooter className='flex flex-row justify-between items-center gap-2 min-w-full flex-wrap p-5'>
-        {links?.actions?.map(({ label, blockchainActions }, index) => {
+        {actions?.map(({ label, blockchainActions }, index) => {
           if (blockchainActions !== undefined) {
             return (
               <ActionButton
@@ -54,7 +54,7 @@ export function MetadataCard ({
               />
             )
           }
-          return null // Asegúrate de manejar el caso donde blockchainActions es undefined
+          return null
         })}
       </CardFooter>
     </Card>

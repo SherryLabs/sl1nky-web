@@ -6,11 +6,17 @@ export interface BlockchainAction extends LinkedAction {
   /** ABI of the smart contract */
   contractABI: any
   /** Parameters for the blockchain transaction */
-  transactionParameters: Array<any>
+  transactionParameters: BlockchainParameter[]
   /** Type of blockchain action: 'read' or 'write' */
   blockchainActionType: 'read' | 'write'
   /** Function name of the smart contract */
   functionName: string
   /** Function signature of the smart contract */
   functionSignature?: string
+  chainId: number
+}
+
+export type BlockchainParameter = {
+  type: 'string' | 'unit256' | 'boolean'
+  label: string
 }
