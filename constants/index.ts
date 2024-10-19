@@ -12,7 +12,7 @@ export const metadata: Metadata[] = [
     actions: [
       {
         label: "Set Greeting",
-        contractAddress: "0x2e3b71cf183657582f03c44f35fecf235677c1ed",
+        contractAddress: "0x2f4462dab28A090B4BEF9906CCd6bBd803D3E21c",
         contractABI: abi,
         transactionParameters: [
           {
@@ -26,7 +26,7 @@ export const metadata: Metadata[] = [
       },
       {
         label: "Set Counter",
-        contractAddress: "0x2e3b71cf183657582f03c44f35fecf235677c1ed",
+        contractAddress: "0x2f4462dab28A090B4BEF9906CCd6bBd803D3E21c",
         contractABI: abi,
         transactionParameters: [
           {

@@ -16,8 +16,6 @@ import {
 } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { ActionButton } from '@/components/ActionButton'
-import { metadata } from "@/constants"; 
-import { generateMessageObjectsFromMetadata } from "@/functions/encode";
 
 // #region COMPONENT
 export function MetadataCard ({
@@ -28,7 +26,6 @@ export function MetadataCard ({
   actions
 }: Metadata): JSX.Element {
 
-  
 
 
   return (

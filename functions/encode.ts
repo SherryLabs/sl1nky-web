@@ -5,6 +5,7 @@ import {
   BlockchainAction,
   BlockchainParameter,
 } from "@/sherries/interface/BlockchainAction";
+import { encodeFunctionData } from 'viem'
 
 export function generateMessageObjectsFromMetadata(metadataObject: Metadata) {
   const abiCoder = new AbiCoder(); 
@@ -23,15 +24,7 @@ export function generateMessageObjectsFromMetadata(metadataObject: Metadata) {
       _destinationContract: contractAddress, 
       _params: paramsEncoded, 
       _destinationChain: destinationChain,
-      _gasLimit: 1000000, 
+      _gasLimit: 2000000, 
     };
   });
 }
-
-import { metadata } from "@/constants";
-
-const metadataObject = metadata[0];
-
-const result = generateMessageObjectsFromMetadata(metadataObject);
-
-console.log(result);
