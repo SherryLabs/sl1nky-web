@@ -8,28 +8,46 @@ export const metadata: Metadata[] = [
     title: "Secure Transaction",
     description: "Ensure all your transactions are encrypted and safe.",
     label: "Security",
-    links: {
-      actions: [
-        {
-          type: "blockchain-write",
-          label: "Sign Transaction",
-          href: "/transactions/sign",
-          blockchainActions: [
-            {
-              type: "blockchain-write",
-              label: "Set Greeting", 
-              href: "/transactions/set-greeting", 
-              contractAddress: "0x2e3b71cf183657582f03c44f35fecf235677c1ed",
-              contractABI: abi,
-              transactionParameters: [{ _greeting: "Hello, Blockchain!" }],
-              blockchainActionType: "write",
-              functionName: "setGreeting",
-            },
-          ],
-        },
-      ],
-    },
     disabled: false,
+    actions: [
+      {
+        type: "blockchain-write",
+        label: "Sign Transaction",
+        href: "/transactions/sign",
+        blockchainActions: [
+          {
+            type: "blockchain-write",
+            label: "Set Greeting",
+            href: "/transactions/set-greeting",
+            contractAddress: "0x2e3b71cf183657582f03c44f35fecf235677c1ed",
+            contractABI: abi,
+            transactionParameters: [
+              {
+                type: "string",
+                label: "_greeting",
+              },
+            ],
+            blockchainActionType: "write",
+            functionName: "setGreeting",
+          },
+          {
+            type: "blockchain-write",
+            label: "Set Counter",
+            href: "/transactions/set-counter",
+            contractAddress: "0x2e3b71cf183657582f03c44f35fecf235677c1ed",
+            contractABI: abi,
+            transactionParameters: [
+              {
+                type: "unit256",
+                label: "_counter",
+              },
+            ],
+            blockchainActionType: "write",
+            functionName: "setCounter",
+          },
+        ],
+      },
+    ],
   },
   {
     type: "action",
@@ -37,28 +55,31 @@ export const metadata: Metadata[] = [
     title: "Real Estate Deals",
     description: "Access the latest trusted real estate opportunities.",
     label: "Opportunities",
-    links: {
-      actions: [
-        {
-          type: "blockchain-write",
-          label: "Track Investments",
-          href: "/investments/track",
-          blockchainActions: [
-            {
-              type: "blockchain-write", 
-              label: "Set Counter", 
-              href: "/transactions/set-counter", 
-              contractAddress: "0x2e3b71cf183657582f03c44f35fecf235677c1ed",
-              contractABI: abi,
-              transactionParameters: [{ _counter: 1 }],
-              blockchainActionType: "write",
-              functionName: "setCounter",
-            },
-          ],
-        },
-      ],
-    },
     disabled: false,
+    actions: [
+      {
+        type: "blockchain-write",
+        label: "Track Investments",
+        href: "/investments/track",
+        blockchainActions: [
+          {
+            type: "blockchain-write",
+            label: "Set Counter",
+            href: "/transactions/set-counter",
+            contractAddress: "0x2e3b71cf183657582f03c44f35fecf235677c1ed",
+            contractABI: abi,
+            transactionParameters: [
+              {
+                type: "unit256",
+                label: "_counter",
+              },
+            ],
+            blockchainActionType: "write",
+            functionName: "setCounter",
+          },
+        ],
+      },
+    ],
   },
   {
     type: "action",
@@ -66,28 +87,26 @@ export const metadata: Metadata[] = [
     title: "Build Trust",
     description: "Improve your trust score to access better deals.",
     label: "Trust",
-    links: {
-      actions: [
-        {
-          type: "blockchain-read",
-          label: "Check Score",
-          href: "/trust/score",
-          blockchainActions: [
-            {
-              type: "blockchain-read", 
-              label: "Get Greeting", 
-              href: "/transactions/get-greeting", 
-              contractAddress: "0x2e3b71cf183657582f03c44f35fecf235677c1ed",
-              contractABI: abi,
-              transactionParameters: [],
-              blockchainActionType: "read",
-              functionName: "s_greeting",
-            },
-          ],
-        },
-      ],
-    },
     disabled: true,
+    actions: [
+      {
+        type: "blockchain-read",
+        label: "Check Score",
+        href: "/trust/score",
+        blockchainActions: [
+          {
+            type: "blockchain-read",
+            label: "Get Greeting",
+            href: "/transactions/get-greeting",
+            contractAddress: "0x2e3b71cf183657582f03c44f35fecf235677c1ed",
+            contractABI: abi,
+            transactionParameters: [],
+            blockchainActionType: "read",
+            functionName: "s_greeting",
+          },
+        ],
+      },
+    ],
   },
   {
     type: "action",
@@ -95,27 +114,25 @@ export const metadata: Metadata[] = [
     title: "Ownership Verification",
     description: "Verify the ownership of real estate properties instantly.",
     label: "Verification",
-    links: {
-      actions: [
-        {
-          type: "blockchain-read",
-          label: "View Ownership History",
-          href: "/ownership/history",
-          blockchainActions: [
-            {
-              type: "blockchain-read", 
-              label: "Get Counter",
-              href: "/transactions/get-counter", 
-              contractAddress: "0x2e3b71cf183657582f03c44f35fecf235677c1ed",
-              contractABI: abi,
-              transactionParameters: [],
-              blockchainActionType: "read",
-              functionName: "s_counter",
-            },
-          ],
-        },
-      ],
-    },
     disabled: false,
+    actions: [
+      {
+        type: "blockchain-read",
+        label: "View Ownership History",
+        href: "/ownership/history",
+        blockchainActions: [
+          {
+            type: "blockchain-read",
+            label: "Get Counter",
+            href: "/transactions/get-counter",
+            contractAddress: "0x2e3b71cf183657582f03c44f35fecf235677c1ed",
+            contractABI: abi,
+            transactionParameters: [],
+            blockchainActionType: "read",
+            functionName: "s_counter",
+          },
+        ],
+      },
+    ],
   },
 ];

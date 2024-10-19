@@ -1,59 +1,64 @@
-'use client'
-// #region IMPORTS
-
-// Types and interfaces
-import { type Metadata } from '@/sherries/metadata'
-
-// Components
-import { Button } from '@/components/ui/button'
+"use client";
+import { type Metadata } from "@/sherries/metadata";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle
-} from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import Image from 'next/image'
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import Image from "next/image";
+import { useWriteContract } from "wagmi";
 
 // #region COMPONENT
-export function MetadataCard ({
+export function MetadataCard({
   icon,
   title,
   description,
   label,
-  links
+  actions,
 }: Metadata): JSX.Element {
+  const { writeContract } = useWriteContract();
+
   return (
-    <Card className='w-full max-w-[350px] min-h-full rounded-2xl shadow-lg hover:shadow-2xl'>
-      <CardHeader className='relative min-w-[250px] w-[350px] h-[250px] !p-0 rounded-t-2xl'>
+    <Card className="w-full max-w-[350px] min-h-full rounded-2xl shadow-lg hover:shadow-2xl">
+      <CardHeader className="relative min-w-[250px] w-[350px] h-[250px] !p-0 rounded-t-2xl">
         <Image
           src={icon}
           alt={title}
           fill
-          className='object-cover object-center  rounded-t-2xl'
+          className="object-cover object-center  rounded-t-2xl"
         />
         {label && (
-          <Badge className='absolute top-2 right-3 bg-pink-500'>{label}</Badge>
+          <Badge className="absolute top-2 right-3 bg-pink-500">{label}</Badge>
         )}
       </CardHeader>
-      <CardContent className='p-5 min-w-full flex flex-col justify-start items-start gap-2'>
+      <CardContent className="p-5 min-w-full flex flex-col justify-start items-start gap-2">
         <CardTitle>{title}</CardTitle>
         <CardDescription>{description}</CardDescription>
       </CardContent>
-      <CardFooter className='flex flex-row justify-between items-center gap-2 min-w-full flex-wrap p-5'>
-        {links?.actions?.map(({ label, href }, index) => (
+      <CardFooter className="flex flex-row justify-between items-center gap-2 min-w-full flex-wrap p-5">
+        {actions?.map(({ label, href }, index) => (
           <Button
             key={index}
-            variant={index === 0 ? 'default' : 'outline'}
-            onClick={() => console.log(href)}
-            className='w-full rounded-full whitespace-normal break-words'
+            variant={index === 0 ? "default" : "outline"}
+            onClick={() =>
+              writeContract({
+                abi: [],
+                functionName: "",
+                args: [],
+                address: `0x${""}`,
+              })
+            }
+            className="w-full rounded-full whitespace-normal break-words"
           >
             {label}
           </Button>
         ))}
       </CardFooter>
     </Card>
-  )
+  );
 }

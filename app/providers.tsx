@@ -10,7 +10,7 @@ export function Providers ({ children }: { children: React.ReactNode }) {
     appName: 'Sherries',
     projectId: process.env.NEXT_PUBLIC_PROJECT_ID ?? '',
     chains: [avalancheFuji],
-    ssr: true // If your dApp uses server side rendering (SSR)
+    ssr: true 
   })
 
   const queryClient = new QueryClient()

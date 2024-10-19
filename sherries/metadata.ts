@@ -7,9 +7,7 @@ export interface Metadata<T extends ActionType = 'action'> {
     description: string;
     label: string;
     disabled: boolean;
-    links?: {
-        actions: LinkedAction[];
-    }
+    actions?: LinkedAction[];
 }
 
 export interface LinkedAction {
@@ -19,6 +17,7 @@ export interface LinkedAction {
     blockchainActions?: Array<BlockchainAction>;
     extraActions?: Array<LinkedAction>;
 }
+
 
 export type LinkedActionType =
     | "blockchain-write" 
