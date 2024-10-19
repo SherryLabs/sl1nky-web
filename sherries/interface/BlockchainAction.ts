@@ -1,22 +1,17 @@
-import { LinkedAction } from '../metadata'
-
-export interface BlockchainAction extends LinkedAction {
-  /** Address of the smart contract */
-  contractAddress: `0x${string}`
-  /** ABI of the smart contract */
-  contractABI: any
-  /** Parameters for the blockchain transaction */
-  transactionParameters: BlockchainParameter[]
-  /** Type of blockchain action: 'read' or 'write' */
-  blockchainActionType: 'read' | 'write'
-  /** Function name of the smart contract */
-  functionName: string
-  /** Function signature of the smart contract */
-  functionSignature?: string
-  chainId: number
+export interface BlockchainAction {
+  label: string;
+  contractAddress: `0x${string}`;
+  contractABI: any;
+  transactionParameters: BlockchainParameter[];
+  blockchainActionType: "read" | "write";
+  functionName: string;
+  chainId: ChainId;
 }
 
 export type BlockchainParameter = {
-  type: 'string' | 'unit256' | 'boolean'
-  label: string
-}
+  label: string;
+  type: "string" | "uint256" | "boolean";
+  value?: string | bigint | boolean;
+};
+
+export type ChainId = "Ethereum" | "Base" | "Optimism";

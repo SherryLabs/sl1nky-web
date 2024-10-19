@@ -7,21 +7,9 @@ export interface Metadata<T extends ActionType = 'action'> {
     description: string;
     label: string;
     disabled: boolean;
-    actions?: LinkedAction[];
-}
-
-export interface LinkedAction {
-    type: LinkedActionType;
-    href: string;
-    label: string;
-    blockchainActions?: Array<BlockchainAction>;
-    extraActions?: Array<LinkedAction>;
+    actions?: BlockchainAction[];
 }
 
 
-export type LinkedActionType =
-    | "blockchain-write" 
-    | "blockchain-read" 
-    | "normal" 
     
 export type ActionType = "action" | "message" | "post" | "external-link";

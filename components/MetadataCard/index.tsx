@@ -16,6 +16,8 @@ import {
 } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { ActionButton } from '@/components/ActionButton'
+import { metadata } from "@/constants"; 
+import { generateMessageObjectsFromMetadata } from "@/functions/encode";
 
 // #region COMPONENT
 export function MetadataCard ({
@@ -25,6 +27,10 @@ export function MetadataCard ({
   label,
   actions
 }: Metadata): JSX.Element {
+
+  
+
+
   return (
     <Card className='w-full max-w-[350px] min-h-full rounded-2xl shadow-lg hover:shadow-2xl'>
       <CardHeader className='relative min-w-[250px] w-[350px] h-[250px] !p-0 rounded-t-2xl'>
@@ -43,13 +49,13 @@ export function MetadataCard ({
         <CardDescription>{description}</CardDescription>
       </CardContent>
       <CardFooter className='flex flex-row justify-between items-center gap-2 min-w-full flex-wrap p-5'>
-        {actions?.map(({ label, blockchainActions }, index) => {
-          if (blockchainActions !== undefined) {
+        {actions?.map((action, index) => {
+          if (action !== undefined) {
             return (
               <ActionButton
                 key={index}
-                label={label}
-                blockchainAction={blockchainActions[0]}
+                label={action.label}
+                blockchainAction={action}
                 variant={index === 0 ? 'default' : 'outline'}
               />
             )
