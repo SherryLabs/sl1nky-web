@@ -41,22 +41,23 @@ export const generateTransactionData = (
     });
 
     // Datos necesarios para `sendTx`
-    const destinationAddress = "76ceB8017741c7fEAcae7D1179b0d3eB4151dcc4";
+    const receiverTeleporter = "76c3cF8521b5B1cfddF6c17E7bBe1d3f4dC9Ee14";
     const destinationChain =
-      "db76a6c20fd0af4851417c79c479ebb1e91b3d4e7e57116036d203e3692a0856";
+      "9f3be606497285d0ffbb5ac9ba24aa60346a9b1812479ed66cb329f394a4b1c7";
     const gasLimit = 200000;
     const functionNameSherry = "sendMessage";
+    const teleporterSender = "0x59c80C541F6c065fb56EF25F87b1Fa8b58BEFaC1";
 
     return {
       abi: abiSherry,
-      address: contractAddress,
+      address: teleporterSender,
       functionName: functionNameSherry,
       args: [
-        contractAddress,
-        encodedFunctionCall,
-        `0x${destinationAddress}`,
-        `0x${destinationChain}`,
-        BigInt(gasLimit),
+        contractAddress, // Contrato arbitrario
+        encodedFunctionCall, // Encoded function call
+        `0x${receiverTeleporter}`, // Receiver teleporter
+        `0x${destinationChain}`, // ID de la cadena de destino
+        BigInt(gasLimit), // Límite de gas
       ],
     };
   });

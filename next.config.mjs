@@ -1,6 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
+  domains: ['ipfs.io', 'tu-dominio.com', "gunzillagames.com"],
   remotePatterns: [
     {
       protocol: 'https',

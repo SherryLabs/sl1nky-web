@@ -3,43 +3,48 @@ import { abi } from "./abi";
 
 export const metadata: Metadata[] = [
   {
-    type: "action",
-    icon: "https://plus.unsplash.com/premium_vector-1720931652710-7bfbe41ae29a?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    title: "Secure Transaction",
-    description: "Ensure all your transactions are encrypted and safe.",
-    label: "Security",
+    type: 'action',
+    icon: 'https://example.com/icon.png',
+    title: 'My Miniapp',
+    description: 'This is a test miniapp - please ignore',
+    label: 'Test App',
     disabled: false,
     actions: [
       {
-        label: "Set Greeting",
-        contractAddress: "0x2f4462dab28A090B4BEF9906CCd6bBd803D3E21c",
-        contractABI: abi,
-        transactionParameters: [
+        label: 'Execute Action',
+        contractAddress: '0x1234567890abcdef1234567890abcdef12345678',
+        contractABI: [
           {
-            type: "string",
-            label: "_greeting",
-            value: "Hello, World!",
-          },
+            inputs: [
+              {
+                internalType: 'uint256',
+                name: 'Edad',
+                type: 'uint256'
+              },
+              {
+                internalType: 'address',
+                name: 'Address',
+                type: 'address'
+              }
+            ],
+            name: 'sendMessage',
+            outputs: [],
+            stateMutability: 'nonpayable',
+            type: 'function'
+          }
         ],
-        blockchainActionType: "write",
-        functionName: "setGreeting",
-        chainId: "Ethereum",
-      },
-      {
-        label: "Set Counter",
-        contractAddress: "0x2f4462dab28A090B4BEF9906CCd6bBd803D3E21c",
-        contractABI: abi,
         transactionParameters: [
+          { label: 'Edad', type: 'uint256', value: BigInt(42) },
           {
-            type: "uint256",
-            label: "_counter",
-            value: BigInt(1),
-          },
+            label: 'Address',
+            type: 'string',
+            value: '0x742d35Cc6634C0532925a3b844Bc454e4438f44e'
+          }
         ],
-        blockchainActionType: "write",
-        functionName: "setCounter",
-        chainId: "Ethereum",
-      },
-    ],
+        blockchainActionType: 'write',
+        functionName: 'sendMessage',
+        chainId: 'Ethereum'
+      }
+    ]
   },
 ];

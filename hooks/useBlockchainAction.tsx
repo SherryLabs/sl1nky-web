@@ -1,28 +1,28 @@
 import { BlockchainAction } from "@/sherries/interface/BlockchainAction";
 import { createMetadata } from "slinky-sdk";
 import { useReadContract, useWriteContract } from "wagmi";
+import { generateTransactionData } from "slinky-sdk";
+import { validMetadata } from "@/app/src/meta";
 
 export const useBlockchainAction = ({
   contractABI,
   contractAddress,
   functionName,
   blockchainActionType,
-  data,
   ...args
 }: BlockchainAction) => {
-  const destinationAddress = "0x76ceB8017741c7fEAcae7D1179b0d3eB4151dcc4";
-  const destinationChain =
-    "db76a6c20fd0af4851417c79c479ebb1e91b3d4e7e57116036d203e3692a0856";
-  const gasLimit = 200000;
-  const newArgs = [
-    data.message[0]._destinationContract,
-    data.message[0]._encodedFunctionCall,
-    data.message[0]._destinationAddress,
-    data?.message[0]._destinationChain,
-    gasLimit,
-  ];
+  const values = {
+    Edad: BigInt(42),
+    Address: "0x742d35Cc6634C0532925a3b844Bc454e4438f44e",
+  };
 
-  console.log(newArgs);
+  console.log(values);
+  const data = generateTransactionData({
+    metadata: validMetadata[0],
+    values,
+  });
+
+  // console.log(newArgs);
   const { writeContractAsync, error, isError, isPending, isPaused, isSuccess } =
     useWriteContract();
 
@@ -136,13 +136,21 @@ export const useBlockchainAction = ({
 
   if (blockchainActionType === "write") {
     const write = async () => {
+      console.log(data);
+      console.log({
+        address: data[0].destinationAddress,
+        abi: data[0].abi,
+        functionName: data[0].functionName,
+        args: data[0].args,
+      });
       try {
         const hash = await writeContractAsync({
-          address: destinationAddress,
-          abi,
-          functionName:"sendMessage",
-          args: newArgs,
+          address: data[0].address,
+          abi: data[0].abi,
+          functionName: data[0].functionName,
+          args: data[0].args,
         });
+        console.log(hash);
         return {
           data: hash,
           isError,
@@ -150,6 +158,7 @@ export const useBlockchainAction = ({
           isPaused,
           isSuccess,
         };
+
       } catch (error) {
         throw error;
       }
