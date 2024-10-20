@@ -20,7 +20,6 @@ export const metadata: Metadata[] = [
           {
             type: "string",
             label: "_greeting",
-            value: "Hello, World!",
           },
         ],
         blockchainActionType: "write",
@@ -80,18 +79,6 @@ export const metadata: Metadata[] = [
         contractAddress: "0xc88636a35047cF10E74036DB8BD444Fe3eA276BD",
         contractABI: abiccip,
         transactionParameters: [
-          {
-            type: "string",
-            label: "_receiver",
-          },
-          {
-            type: "string",
-            label: "_token",
-          },
-          {
-            type: "uint256",
-            label: "_amount",
-          },
         ],
         blockchainActionType: "write",
         functionName: "transferUSDC",
