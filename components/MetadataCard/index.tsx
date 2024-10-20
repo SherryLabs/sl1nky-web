@@ -1,65 +1,69 @@
-'use client'
+"use client";
 // #region IMPORTS
 
 // Types and interfaces
-import { type Metadata } from '@/sherries/metadata'
+import { type Metadata } from "@/sherries/metadata";
 
 // Components
-import Image from 'next/image'
+import Image from "next/image";
 import {
   Card,
   CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
-  CardTitle
-} from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
-import { ActionButton } from '@/components/ActionButton'
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { ActionButton } from "@/components/ActionButton";
+
+import { createMetadata } from "slinky-sdk";
+
 
 // #region COMPONENT
-export function MetadataCard ({
+export function MetadataCard({
   icon,
   title,
   description,
   label,
-  actions
+  actions,
 }: Metadata): JSX.Element {
-
-
+  const metadata = { icon, title, description, label, actions };
+  const data = createMetadata(metadata);
 
   return (
-    <Card className='w-full max-w-[350px] min-h-full rounded-2xl shadow-lg hover:shadow-2xl'>
-      <CardHeader className='relative min-w-[250px] w-[350px] h-[250px] !p-0 rounded-t-2xl'>
+    <Card className="w-full max-w-[350px] min-h-full rounded-2xl shadow-lg hover:shadow-2xl">
+      <CardHeader className="relative min-w-[250px] w-[350px] h-[250px] !p-0 rounded-t-2xl">
         <Image
           src={icon}
           alt={title}
           fill
-          className='object-cover object-center  rounded-t-2xl'
+          className="object-cover object-center  rounded-t-2xl"
         />
         {label && (
-          <Badge className='absolute top-2 right-3 bg-pink-500'>{label}</Badge>
+          <Badge className="absolute top-2 right-3 bg-pink-500">{label}</Badge>
         )}
       </CardHeader>
-      <CardContent className='p-5 min-w-full flex flex-col justify-start items-start gap-2'>
+      <CardContent className="p-5 min-w-full flex flex-col justify-start items-start gap-2">
         <CardTitle>{title}</CardTitle>
         <CardDescription>{description}</CardDescription>
       </CardContent>
-      <CardFooter className='flex flex-row justify-between items-center gap-2 min-w-full flex-wrap p-5'>
+      <CardFooter className="flex flex-row justify-between items-center gap-2 min-w-full flex-wrap p-5">
         {actions?.map((action, index) => {
           if (action !== undefined) {
             return (
               <ActionButton
                 key={index}
+                data={data}
                 label={action.label}
                 blockchainAction={action}
-                variant={index === 0 ? 'default' : 'outline'}
+                variant={index === 0 ? "default" : "outline"}
               />
-            )
+            );
           }
-          return null
+          return null;
         })}
       </CardFooter>
     </Card>
-  )
+  );
 }

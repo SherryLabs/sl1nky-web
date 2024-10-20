@@ -4,6 +4,7 @@ import { type BlockchainAction } from '@/sherries/interface/BlockchainAction'
 
 export interface ActionButtonProps {
   label: string
+  data: any
   blockchainAction: BlockchainAction
   variant?: VariantProps<typeof buttonVariants>['variant']
 }

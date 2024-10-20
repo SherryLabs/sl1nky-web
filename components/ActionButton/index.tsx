@@ -14,14 +14,16 @@ import { Button } from '@/components/ui/button'
 // #region COMPONENT
 export const ActionButton = ({
   label,
+  data,
   blockchainAction,
   variant
 }: ActionButtonProps): JSX.Element => {
+
   const { isConnected } = useAccount()
   const { connect } = useConnect()
 
   const { isPending, isError, error, execute } =
-    useBlockchainAction(blockchainAction)
+    useBlockchainAction({...blockchainAction, data})
 
   const handleClick = async () => {
     if (!isConnected) {
